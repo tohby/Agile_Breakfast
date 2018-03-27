@@ -3,6 +3,6 @@
     <color name="colorAgile">#454545</color>
     <color name="colorPrimary">#454545</color>
     <color name="colorPrimaryDark">#2d2c2c</color>
-    <color name="colorAccent">#FF6600</color>
-
+    <color name="colorAccent">#ff6600</color>
+    <color name="bgTint">#7bb0e7</color>
 </resources>
