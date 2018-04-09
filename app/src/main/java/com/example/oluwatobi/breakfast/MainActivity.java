@@ -2,6 +2,7 @@ package com.example.oluwatobi.breakfast;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,10 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+
+import com.daimajia.easing.linear.Linear;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -31,6 +36,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 
 public class MainActivity extends AppCompatActivity implements FeedRenderable{
+    EditText e1;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -48,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements FeedRenderable{
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private LinearLayoutManager mLinearLayoutManger;
+
 
     @Override
     protected void onStart() {
@@ -61,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements FeedRenderable{
     @Override
     public void renderFeed(FeedsAdapter adapter) {
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        mLinearLayoutManger = new  LinearLayoutManager(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new VerticalSpace(20));
         recyclerView.setAdapter(adapter);
@@ -73,8 +81,7 @@ public class MainActivity extends AppCompatActivity implements FeedRenderable{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.breakfast);
         // Create the adapter that will return a fragment for each of the three
@@ -82,16 +89,21 @@ public class MainActivity extends AppCompatActivity implements FeedRenderable{
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
     }
 
+    //@Override
+    //protected void onResume() {
+    //    super.onResume();
+    //    renderFeed();
+    //}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements FeedRenderable{
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     /**
