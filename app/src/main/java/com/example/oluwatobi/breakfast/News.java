@@ -20,4 +20,6 @@ public class News extends Fragment {
         View rootView = inflater.inflate(R.layout.news, container, false);
         return rootView;
     }
+
+
 }
