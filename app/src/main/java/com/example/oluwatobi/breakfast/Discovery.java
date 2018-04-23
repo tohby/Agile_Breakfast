@@ -3,6 +3,7 @@ package com.example.oluwatobi.breakfast;
 /**
  * Created by oluwatobi on 3/19/2018.
  */
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 public class Discovery extends Fragment{
+
+    private WebView webView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,14 +26,13 @@ public class Discovery extends Fragment{
             @Override
             public void onPageFinished(WebView view, String url){
                 webView.loadUrl("javascript:(function() { " +
-                        "var head = document.getElementsByTagName('header')[0].style.display=\"none\"; " +
-                        "})()");
-                webView.loadUrl("javascript:(function() { " +
-                        "var head = document.getElementsByTagName('footer')[0].style.display=\"none\"; " +
+                        "document.getElementsByTagName('header')[0].style.display=\"none\"; " +
+                        "document.getElementById('footer').style.display= \"none\"; " +
                         "})()");
             }
         });
         webView.loadUrl("https://hocvienagile.com/agipedia-index/");
         return rootView;
     }
+
 }
