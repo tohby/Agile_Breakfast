@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements FeedRenderable{
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setLogo(R.drawable.breakfast);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
