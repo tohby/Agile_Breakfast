@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:ellipsize="end"
-            android:paddingTop="70dp"
+            android:paddingTop="60dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
